@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name GBA)(type KiCad)(uri ${KIPRJMOD}/GBA.pretty)(options "")(descr ""))
+)

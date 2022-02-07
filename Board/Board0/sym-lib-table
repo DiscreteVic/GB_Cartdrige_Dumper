@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name GB)(type Legacy)(uri ${KIPRJMOD}/GB.lib)(options "")(descr ""))
+  (lib (name GBA)(type Legacy)(uri ${KIPRJMOD}/GBA.lib)(options "")(descr ""))
+)
