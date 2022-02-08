@@ -1,5 +1,5 @@
 Analysis & Synthesis report for 7SegController
-Mon Feb 07 21:54:23 2022
+Tue Feb 08 22:20:41 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -13,11 +13,19 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: Prescaler:pres
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Parameter Settings for User Entity Instance: Prescaler:pres
+ 11. Parameter Settings for User Entity Instance: Prescaler:presB
+ 12. Port Connectivity Checks: "SevSegController:ssc5"
+ 13. Port Connectivity Checks: "SevSegController:ssc4"
+ 14. Port Connectivity Checks: "SevSegController:ssc3"
+ 15. Port Connectivity Checks: "SevSegController:ssc2"
+ 16. Port Connectivity Checks: "SevSegController:ssc1"
+ 17. Port Connectivity Checks: "SevSegController:ssc0"
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
 
 
 
@@ -44,15 +52,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Feb 07 21:54:23 2022       ;
+; Analysis & Synthesis Status        ; Successful - Tue Feb 08 22:20:41 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; 7SegController                              ;
 ; Top-level Entity Name              ; DE10_LITE_Golden_Top                        ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 34                                          ;
-;     Total combinational functions  ; 34                                          ;
-;     Dedicated logic registers      ; 27                                          ;
-; Total registers                    ; 27                                          ;
+; Total logic elements               ; 90                                          ;
+;     Total combinational functions  ; 89                                          ;
+;     Dedicated logic registers      ; 41                                          ;
+; Total registers                    ; 41                                          ;
 ; Total pins                         ; 86                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -162,7 +170,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-16        ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -182,20 +191,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+------------------+
 ; Resource                                    ; Usage            ;
 +---------------------------------------------+------------------+
-; Estimated Total logic elements              ; 34               ;
+; Estimated Total logic elements              ; 90               ;
 ;                                             ;                  ;
-; Total combinational functions               ; 34               ;
+; Total combinational functions               ; 89               ;
 ; Logic element usage by number of LUT inputs ;                  ;
-;     -- 4 input functions                    ; 8                ;
-;     -- 3 input functions                    ; 2                ;
-;     -- <=2 input functions                  ; 24               ;
+;     -- 4 input functions                    ; 28               ;
+;     -- 3 input functions                    ; 3                ;
+;     -- <=2 input functions                  ; 58               ;
 ;                                             ;                  ;
 ; Logic elements by mode                      ;                  ;
-;     -- normal mode                          ; 13               ;
-;     -- arithmetic mode                      ; 21               ;
+;     -- normal mode                          ; 33               ;
+;     -- arithmetic mode                      ; 56               ;
 ;                                             ;                  ;
-; Total registers                             ; 27               ;
-;     -- Dedicated logic registers            ; 27               ;
+; Total registers                             ; 41               ;
+;     -- Dedicated logic registers            ; 41               ;
 ;     -- I/O registers                        ; 0                ;
 ;                                             ;                  ;
 ; I/O pins                                    ; 86               ;
@@ -203,9 +212,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0                ;
 ;                                             ;                  ;
 ; Maximum fan-out node                        ; ADC_CLK_10~input ;
-; Maximum fan-out                             ; 23               ;
-; Total fan-out                               ; 307              ;
-; Average fan-out                             ; 1.14             ;
+; Maximum fan-out                             ; 24               ;
+; Total fan-out                               ; 482              ;
+; Average fan-out                             ; 1.43             ;
 +---------------------------------------------+------------------+
 
 
@@ -214,11 +223,49 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+----------------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                         ; Entity Name          ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+----------------------+--------------+
-; |DE10_LITE_Golden_Top      ; 34 (4)              ; 27 (4)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 86   ; 0            ; 0          ; |DE10_LITE_Golden_Top                       ; DE10_LITE_Golden_Top ; work         ;
-;    |Prescaler:pres|        ; 23 (23)             ; 23 (23)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|Prescaler:pres        ; Prescaler            ; work         ;
-;    |SevSegController:ssc0| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|SevSegController:ssc0 ; SevSegController     ; work         ;
+; |DE10_LITE_Golden_Top      ; 89 (16)             ; 41 (17)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 86   ; 0            ; 0          ; |DE10_LITE_Golden_Top                       ; DE10_LITE_Golden_Top ; work         ;
+;    |Prescaler:presB|       ; 23 (23)             ; 23 (23)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|Prescaler:presB       ; Prescaler            ; work         ;
+;    |Prescaler:pres|        ; 22 (22)             ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|Prescaler:pres        ; Prescaler            ; work         ;
+;    |SevSegController:ssc2| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|SevSegController:ssc2 ; SevSegController     ; work         ;
+;    |SevSegController:ssc3| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|SevSegController:ssc3 ; SevSegController     ; work         ;
+;    |SevSegController:ssc4| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|SevSegController:ssc4 ; SevSegController     ; work         ;
+;    |SevSegController:ssc5| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|SevSegController:ssc5 ; SevSegController     ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; gba_cart_RD                            ; Merged with gba_cart_CS2               ;
+; Prescaler:pres|count[0]                ; Merged with Prescaler:presB|count[0]   ;
+; Prescaler:pres|count[1]                ; Merged with Prescaler:presB|count[1]   ;
+; Prescaler:pres|count[2]                ; Merged with Prescaler:presB|count[2]   ;
+; Prescaler:pres|count[3]                ; Merged with Prescaler:presB|count[3]   ;
+; Prescaler:pres|count[4]                ; Merged with Prescaler:presB|count[4]   ;
+; Prescaler:pres|count[5]                ; Merged with Prescaler:presB|count[5]   ;
+; Prescaler:pres|count[6]                ; Merged with Prescaler:presB|count[6]   ;
+; Prescaler:pres|count[7]                ; Merged with Prescaler:presB|count[7]   ;
+; Prescaler:pres|count[8]                ; Merged with Prescaler:presB|count[8]   ;
+; Prescaler:pres|count[9]                ; Merged with Prescaler:presB|count[9]   ;
+; Prescaler:pres|count[10]               ; Merged with Prescaler:presB|count[10]  ;
+; Prescaler:pres|count[11]               ; Merged with Prescaler:presB|count[11]  ;
+; Prescaler:pres|count[12]               ; Merged with Prescaler:presB|count[12]  ;
+; Prescaler:pres|count[13]               ; Merged with Prescaler:presB|count[13]  ;
+; Prescaler:pres|count[14]               ; Merged with Prescaler:presB|count[14]  ;
+; Prescaler:pres|count[15]               ; Merged with Prescaler:presB|count[15]  ;
+; Prescaler:pres|count[16]               ; Merged with Prescaler:presB|count[16]  ;
+; Prescaler:pres|count[17]               ; Merged with Prescaler:presB|count[17]  ;
+; Prescaler:pres|count[18]               ; Merged with Prescaler:presB|count[18]  ;
+; Prescaler:pres|count[19]               ; Merged with Prescaler:presB|count[19]  ;
+; Prescaler:pres|count[20]               ; Merged with Prescaler:presB|count[20]  ;
+; Prescaler:pres|count[21]               ; Merged with Prescaler:presB|count[21]  ;
+; digA[0..3]                             ; Stuck at GND due to stuck port data_in ;
+; digB[0..3]                             ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 31 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -226,7 +273,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 27    ;
+; Total registers                              ; 41    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -246,27 +293,96 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Prescaler:presB ;
++----------------+-------+-------------------------------------+
+; Parameter Name ; Value ; Type                                ;
++----------------+-------+-------------------------------------+
+; N              ; 23    ; Signed Integer                      ;
++----------------+-------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SevSegController:ssc5"                                                                                                                                                               ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; dot     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dot[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SevSegController:ssc4"                                                                                                                                                               ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; dot     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dot[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SevSegController:ssc3"                                                                                                                                                               ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; dot     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dot[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SevSegController:ssc2"                                                                                                                                                               ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; dot     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dot[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SevSegController:ssc1"                                                                                                                                                               ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; dot     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dot[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SevSegController:ssc0"                                                                                                                                                               ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; dot     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dot[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 86                          ;
-; cycloneiii_ff         ; 27                          ;
-;     plain             ; 27                          ;
+; cycloneiii_ff         ; 41                          ;
+;     plain             ; 41                          ;
 ; cycloneiii_io_obuf    ; 36                          ;
-; cycloneiii_lcell_comb ; 36                          ;
-;     arith             ; 21                          ;
-;         2 data inputs ; 20                          ;
-;         3 data inputs ; 1                           ;
-;     normal            ; 15                          ;
-;         1 data inputs ; 5                           ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 1                           ;
-;         4 data inputs ; 8                           ;
+; cycloneiii_lcell_comb ; 95                          ;
+;     arith             ; 56                          ;
+;         2 data inputs ; 53                          ;
+;         3 data inputs ; 3                           ;
+;     normal            ; 39                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 9                           ;
+;         4 data inputs ; 28                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.10                        ;
-; Average LUT depth     ; 1.51                        ;
+; Average LUT depth     ; 1.74                        ;
 +-----------------------+-----------------------------+
 
 
@@ -285,7 +401,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Mon Feb 07 21:54:16 2022
+    Info: Processing started: Tue Feb 08 22:20:35 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off GB_Cartdrige_Dumper -c 7SegController
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -296,36 +412,35 @@ Info (12021): Found 1 design units, including 1 entities, in source file sevsegc
 Info (12021): Found 1 design units, including 1 entities, in source file prescaler.v
     Info (12023): Found entity 1: Prescaler File: D:/Projects/GB_Cartdrige_Dumper/src/Prescaler.v Line: 6
 Info (12127): Elaborating entity "DE10_LITE_Golden_Top" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at DE10_LITE_Golden_Top.v(147): truncated value with size 32 to match size of target (4) File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 147
-Info (12128): Elaborating entity "Prescaler" for hierarchy "Prescaler:pres" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 137
+Warning (10036): Verilog HDL or VHDL warning at DE10_LITE_Golden_Top.v(136): object "gba_cart_romData" assigned a value but never read File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 136
+Warning (10036): Verilog HDL or VHDL warning at DE10_LITE_Golden_Top.v(139): object "gba_cart_REQ" assigned a value but never read File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 139
+Warning (10230): Verilog HDL assignment warning at DE10_LITE_Golden_Top.v(146): truncated value with size 9 to match size of target (8) File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 146
+Warning (10230): Verilog HDL assignment warning at DE10_LITE_Golden_Top.v(198): truncated value with size 32 to match size of target (16) File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 198
+Info (12128): Elaborating entity "Prescaler" for hierarchy "Prescaler:pres" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 166
 Warning (10230): Verilog HDL assignment warning at Prescaler.v(13): truncated value with size 32 to match size of target (23) File: D:/Projects/GB_Cartdrige_Dumper/src/Prescaler.v Line: 13
-Info (12128): Elaborating entity "SevSegController" for hierarchy "SevSegController:ssc0" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 139
+Info (12128): Elaborating entity "SevSegController" for hierarchy "SevSegController:ssc0" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 170
+Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[0]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[1]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[2]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[3]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[4]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[5]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[6]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[7]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[8]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[9]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[10]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[11]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[12]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[13]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[14]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[15]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[24]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[33]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[35]" and its non-tri-state driver. File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
 Warning (13039): The following bidirectional pins have no drivers
-    Warning (13040): bidirectional pin "GPIO[0]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[1]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[2]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[3]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[4]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[5]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[6]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[7]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[8]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[9]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[10]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[11]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[12]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[13]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[14]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[15]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[16]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[17]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[18]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[19]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[20]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[21]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[22]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[23]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[24]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
     Warning (13040): bidirectional pin "GPIO[25]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
     Warning (13040): bidirectional pin "GPIO[26]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
     Warning (13040): bidirectional pin "GPIO[27]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
@@ -333,24 +448,81 @@ Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "GPIO[29]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
     Warning (13040): bidirectional pin "GPIO[30]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
     Warning (13040): bidirectional pin "GPIO[31]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[32]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[33]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[34]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
-    Warning (13040): bidirectional pin "GPIO[35]" has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+Warning (13032): The following tri-state nodes are fed by constants
+    Warning (13033): The pin "GPIO[16]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[17]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[18]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[19]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[20]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[21]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[22]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[23]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[32]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13033): The pin "GPIO[34]" is fed by GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+Info (13036): One or more bidirectional pins are fed by always-enabled (GND-fed) open-drain buffers
+    Info (13037): Fan-out of permanently enabled (GND-fed) open-drain buffer feeding bidirectional pin "GPIO[16]" is set to GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Info (13037): Fan-out of permanently enabled (GND-fed) open-drain buffer feeding bidirectional pin "GPIO[17]" is set to GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Info (13037): Fan-out of permanently enabled (GND-fed) open-drain buffer feeding bidirectional pin "GPIO[18]" is set to GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Info (13037): Fan-out of permanently enabled (GND-fed) open-drain buffer feeding bidirectional pin "GPIO[19]" is set to GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Info (13037): Fan-out of permanently enabled (GND-fed) open-drain buffer feeding bidirectional pin "GPIO[20]" is set to GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Info (13037): Fan-out of permanently enabled (GND-fed) open-drain buffer feeding bidirectional pin "GPIO[21]" is set to GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Info (13037): Fan-out of permanently enabled (GND-fed) open-drain buffer feeding bidirectional pin "GPIO[22]" is set to GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Info (13037): Fan-out of permanently enabled (GND-fed) open-drain buffer feeding bidirectional pin "GPIO[23]" is set to GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "GPIO[0]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[1]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[2]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[3]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[4]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[5]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[6]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[7]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[8]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[9]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[10]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[11]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[12]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[13]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[14]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[15]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[24]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[33]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+    Warning (13010): Node "GPIO[35]~synth" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 122
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[0]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 61
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 61
+    Warning (13410): Pin "HEX0[2]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 61
+    Warning (13410): Pin "HEX0[3]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 61
+    Warning (13410): Pin "HEX0[4]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 61
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 61
+    Warning (13410): Pin "HEX0[6]" is stuck at VCC File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 61
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 61
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 64
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 64
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 64
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 64
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 64
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 64
+    Warning (13410): Pin "HEX1[6]" is stuck at VCC File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 64
+    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 64
+    Warning (13410): Pin "HEX2[7]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 67
+    Warning (13410): Pin "HEX3[7]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 70
+    Warning (13410): Pin "HEX4[7]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 73
+    Warning (13410): Pin "HEX5[7]" is stuck at GND File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 76
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "MAX10_CLK1_50" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 37
-Info (21057): Implemented 120 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 176 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 48 output pins
     Info (21060): Implemented 36 bidirectional pins
-    Info (21061): Implemented 34 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 42 warnings
-    Info: Peak virtual memory: 4834 megabytes
-    Info: Processing ended: Mon Feb 07 21:54:23 2022
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:15
+    Info (21061): Implemented 90 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 89 warnings
+    Info: Peak virtual memory: 4838 megabytes
+    Info: Processing ended: Tue Feb 08 22:20:41 2022
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:16
 
 

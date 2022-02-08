@@ -127,24 +127,79 @@ module DE10_LITE_Golden_Top(
 //  REG/WIRE declarations
 //=======================================================
 
+wire gba_cart_PHI;
+reg gba_cart_WR;
+reg gba_cart_RD;
+reg gba_cart_CS;
+reg [15:0]gba_cart_lowAdd;
+reg [8:0]gba_cart_upAdd;
+wire [15:0]gba_cart_romData;
+wire [7:0]gba_cart_sramData;
+reg gba_cart_CS2;
+wire gba_cart_REQ;
+
+assign GPIO[35] = gba_cart_PHI;
+assign GPIO[34] = gba_cart_WR;
+assign GPIO[33] = gba_cart_RD;
+assign GPIO[32] = gba_cart_CS;
+assign GPIO[15:0] = gba_cart_lowAdd; 
+assign GPIO[23:16] = gba_cart_upAdd;
+assign gba_cart_romData = GPIO[15:0]; 
+assign gba_cart_sramData = GPIO[23:16];
+assign GPIO[24] = gba_cart_CS2;
+assign gba_cart_REQ = GPIO[25]; 
+
+
+
+
+
+
+
 wire clk;
-reg [3:0]dig;
+reg [3:0]digA;
+reg [3:0]digB;
 
 //=======================================================
 //  Structural coding
 //=======================================================
 
 Prescaler #(.N(23)) pres(.clk_in(ADC_CLK_10), .clk_out(clk));
+Prescaler #(.N(23)) presB(.clk_in(ADC_CLK_10), .clk_out(gba_cart_PHI));
 
-SevSegController ssc0(.dig(dig),.dot(clk),.leds(HEX0));
-SevSegController ssc1(.dig(dig),.dot(clk),.leds(HEX1));
-SevSegController ssc2(.dig(dig),.dot(clk),.leds(HEX2));
-SevSegController ssc3(.dig(dig),.dot(clk),.leds(HEX3));
-SevSegController ssc4(.dig(dig),.dot(clk),.leds(HEX4));
-SevSegController ssc5(.dig(dig),.dot(clk),.leds(HEX5));
+
+SevSegController ssc0(.dig(digA),.dot(0),.leds(HEX0));
+SevSegController ssc1(.dig(digB),.dot(0),.leds(HEX1));
+SevSegController ssc2(.dig(gba_cart_lowAdd[3:0]),.dot(1),.leds(HEX2));
+SevSegController ssc3(.dig(gba_cart_lowAdd[7:4]),.dot(1),.leds(HEX3));
+SevSegController ssc4(.dig(gba_cart_lowAdd[11:8]),.dot(1),.leds(HEX4));
+SevSegController ssc5(.dig(gba_cart_lowAdd[15:12]),.dot(1),.leds(HEX5));
+
+
+initial gba_cart_WR = 1'b0;
+initial gba_cart_RD = 1'b0;
+initial gba_cart_CS = 1'b0;
+initial gba_cart_lowAdd = 16'H0000;
+initial gba_cart_upAdd = 8'HFF;
+initial gba_cart_lowAdd = 1'b0;
+initial gba_cart_upAdd = 1'b0 ;
+initial gba_cart_CS2 = 1'b0;
+
 
 always @(posedge(clk)) begin
-	dig <= dig + 1;
+/*
+	gba_cart_WR <= 1'b1;
+	gba_cart_CS2 <= 1'b1;
+	gba_cart_upAdd <= gba_cart_lowAdd - 1;
+*/
+
+	gba_cart_RD <= 1'b1;
+	gba_cart_CS2 <= 1'b1;
+
+	gba_cart_lowAdd <= gba_cart_lowAdd + 1;
+
+	digA <= gba_cart_sramData[3:0];
+	digB <= gba_cart_sramData[7:4];
+
 end
 
 endmodule
