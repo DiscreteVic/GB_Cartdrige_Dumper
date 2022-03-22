@@ -1,5 +1,5 @@
 Flow report for 7SegController
-Tue Feb 08 22:20:58 2022
+Tue Mar 22 20:41:13 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,18 +41,18 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Feb 08 22:20:55 2022       ;
+; Flow Status                        ; Successful - Tue Mar 22 20:41:09 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; 7SegController                              ;
 ; Top-level Entity Name              ; DE10_LITE_Golden_Top                        ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 91 / 49,760 ( < 1 % )                       ;
-;     Total combinational functions  ; 91 / 49,760 ( < 1 % )                       ;
-;     Dedicated logic registers      ; 41 / 49,760 ( < 1 % )                       ;
-; Total registers                    ; 41                                          ;
-; Total pins                         ; 86 / 360 ( 24 % )                           ;
+; Total logic elements               ; 98 / 49,760 ( < 1 % )                       ;
+;     Total combinational functions  ; 82 / 49,760 ( < 1 % )                       ;
+;     Dedicated logic registers      ; 47 / 49,760 ( < 1 % )                       ;
+; Total registers                    ; 47                                          ;
+; Total pins                         ; 145 / 360 ( 40 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 1,677,312 ( 0 % )                       ;
 ; Embedded Multiplier 9-bit elements ; 0 / 288 ( 0 % )                             ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/08/2022 22:20:35 ;
+; Start date & time ; 03/22/2022 20:40:49 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; 7SegController      ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+----------------+----------------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value  ; Entity Name          ; Section Id ;
 +-------------------------------------+----------------------------------------+----------------+----------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 27214208380247.164435523508836         ; --             ; --                   ; --         ;
+; COMPILER_SIGNATURE_ID               ; 27214208380247.164797804902044         ; --             ; --                   ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --             ; --                   ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --             ; --                   ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --             ; DE10_LITE_Golden_Top ; Top        ;
@@ -96,11 +96,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 4838 MB             ; 00:00:15                           ;
-; Fitter               ; 00:00:09     ; 1.1                     ; 6611 MB             ; 00:00:19                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 4694 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.2                     ; 4966 MB             ; 00:00:02                           ;
-; Total                ; 00:00:21     ; --                      ; --                  ; 00:00:38                           ;
+; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4840 MB             ; 00:00:17                           ;
+; Fitter               ; 00:00:10     ; 1.1                     ; 6609 MB             ; 00:00:20                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 4695 MB             ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.2                     ; 4967 MB             ; 00:00:03                           ;
+; Total                ; 00:00:22     ; --                      ; --                  ; 00:00:42                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
