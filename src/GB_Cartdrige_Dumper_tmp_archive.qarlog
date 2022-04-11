@@ -1,0 +1,27 @@
+Quartus Prime Archive log --	D:/Projects/GB_Cartdrige_Dumper/src/GB_Cartdrige_Dumper_tmp_archive.qarlog
+
+Archive:	D:/Projects/GB_Cartdrige_Dumper/src/GB_Cartdrige_Dumper_tmp_archive.qar
+Date:		Mon Apr 04 19:36:56 2022
+Quartus Prime		20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+D:/Projects/GB_Cartdrige_Dumper/src/7SegController.qsf
+D:/Projects/GB_Cartdrige_Dumper/src/7SegController_assignment_defaults.qdf
+D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v
+D:/Projects/GB_Cartdrige_Dumper/src/FlipFlopSR.v
+D:/Projects/GB_Cartdrige_Dumper/src/GB_Cartdrige_Dumper.qpf
+D:/Projects/GB_Cartdrige_Dumper/src/Prescaler.v
+D:/Projects/GB_Cartdrige_Dumper/src/PulseGenerator.v
+D:/Projects/GB_Cartdrige_Dumper/src/SevSegController.v
+D:/Projects/GB_Cartdrige_Dumper/src/UART.v
+D:/Projects/GB_Cartdrige_Dumper/src/bidirec.v
+	======= Total: 10 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Mon Apr 04 19:36:57 2022
+Source archive file:	D:/Projects/GB_Cartdrige_Dumper/src/GB_Cartdrige_Dumper_tmp_archive.qar
+Archive was extracted into	D:/Projects/fpgatest/
+		 - successfully.

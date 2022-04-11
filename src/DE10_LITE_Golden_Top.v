@@ -121,7 +121,10 @@ module DE10_LITE_Golden_Top(
 `endif
 );
 
-
+parameter DUMPS_TO_DO = 3;
+parameter INTERNAL_MEMORY_SIZE = 1;
+parameter OPENMSG_SIZE = 3;
+parameter ENDMSG_SIZE = 3;
 
 //=======================================================
 //  REG/WIRE declarations
@@ -131,35 +134,97 @@ reg gba_cart_RD;
 reg gba_cart_CS;
 reg [15:0]gba_cart_lowAdd;
 reg [7:0]gba_cart_upAdd;
+reg [23:0]gba_cart_Add;
 wire [15:0]gba_cart_romData;
-reg [15:0]romData;
+wire [15:0]romData;
 reg gba_cart_CS2;
 wire gba_cart_REQ;
 
 
-
-
-wire clk;
+wire clkSlow;
+wire clkFast;
 reg [3:0]digA;
 reg [3:0]digB;
-
 reg [7:0]step;
-
+reg [7:0]nextStep;
 reg budDir;
 
 
-assign ARDUINO_IO[2] = clk;
-assign ARDUINO_IO[3] = gba_cart_CS;
-assign ARDUINO_IO[4] = gba_cart_RD;
+wire tx;
+reg [7:0]tx_data;
+wire portAvailable;
 
+reg newDump;
+reg transmit;
+reg send;
+
+integer memIdx;
+integer memIdxB;
+integer nDumps;
+reg [7:0]memDumped[0:INTERNAL_MEMORY_SIZE];
+reg [7:0]openMsg[0:OPENMSG_SIZE];
+reg [7:0]endMsg[0:ENDMSG_SIZE];
+
+
+
+
+
+assign ARDUINO_IO[12] = tx;
 
 assign GPIO[35] = gba_cart_RD;
 assign GPIO[34] = gba_cart_CS;
 assign GPIO[23:16] = gba_cart_upAdd;
 
-assign gba_cart_romData = romData;
+//assign gba_cart_romData = romData;
 
 
+initial begin
+	openMsg[0] = 8'H00; //----- DEAD WORD
+	openMsg[1] = 8'H3C; 
+	openMsg[2] = 8'H53;
+	/*openMsg[3] = 8'H54;
+	openMsg[4] = 8'H41;
+	openMsg[5] = 8'H52;
+	openMsg[6] = 8'H54;
+	openMsg[7] = 8'H49;
+	openMsg[8] = 8'H4E;
+	openMsg[9] = 8'H47;
+	openMsg[10] = 8'H20;
+	openMsg[11] = 8'H54;
+	openMsg[12] = 8'H52;
+	openMsg[13] = 8'H41;
+	openMsg[14] = 8'H4E;
+	openMsg[15] = 8'H53;
+	openMsg[16] = 8'H4D;
+	openMsg[17] = 8'H49;
+	openMsg[18] = 8'H53;
+	openMsg[19] = 8'H49;
+	openMsg[20] = 8'H4F;
+	openMsg[21] = 8'H4E;*/
+	openMsg[3] = 8'H3E;
+
+	endMsg[0] = 8'H00; //----- DEAD WORD
+	endMsg[1] = 8'H3C; 
+	endMsg[2] = 8'H45;
+	/*endMsg[3] = 8'H4E;
+	endMsg[4] = 8'H44;
+	endMsg[5] = 8'H49;
+	endMsg[6] = 8'H4E;
+	endMsg[7] = 8'H47;
+	endMsg[8] = 8'H20;
+	endMsg[9] = 8'H54;
+	endMsg[10] = 8'H52;
+	endMsg[11] = 8'H41;
+	endMsg[12] = 8'H4E;
+	endMsg[13] = 8'H53;
+	endMsg[14] = 8'H4D;
+	endMsg[15] = 8'H49;
+	endMsg[16] = 8'H53;
+	endMsg[17] = 8'H49;
+	endMsg[18] = 8'H4F;
+	endMsg[19] = 8'H4E;*/
+	endMsg[3] = 8'H3E;
+end
 
 
 
@@ -167,65 +232,209 @@ assign gba_cart_romData = romData;
 //  Structural coding
 //=======================================================
 
-Prescaler #(.N(3)) presA(.clk_in(ADC_CLK_10), .clk_out(clkA));
+Prescaler #(.N(6)) pres(.clk_in(MAX10_CLK1_50), .clk_out(clkSlow));
 
-Prescaler #(.N(20)) pres(.clk_in(ADC_CLK_10), .clk_out(clk));
-Prescaler #(.N(3)) presPHI(.clk_in(ADC_CLK_10), .clk_out(gba_cart_PHI));
+Prescaler #(.N(4)) presUART(.clk_in(MAX10_CLK1_50), .clk_out(clkFast)); //3Mbaud
 
+SevSegController ssc0(.dig(nDumps[3:0]),.dot(nDumps[24]),.leds(HEX0));
+SevSegController ssc1(.dig(nDumps[7:4]),.dot(0),.leds(HEX1));
+SevSegController ssc4(.dig(nDumps[11:8]),.dot(0),.leds(HEX2));
+SevSegController ssc5(.dig(nDumps[15:12]),.dot(0),.leds(HEX3));
+SevSegController ssc2(.dig(nDumps[19:16]),.dot(0),.leds(HEX4));
+SevSegController ssc3(.dig(nDumps[23:20]),.dot(),.leds(HEX5));
 
-SevSegController ssc0(.dig(step[3:0]),.dot(0),.leds(HEX0));
-SevSegController ssc1(.dig(step[7:4]),.dot(0),.leds(HEX1));
-SevSegController ssc2(.dig(romData[3:0]),.dot(1),.leds(HEX4));
-SevSegController ssc3(.dig(romData[7:4]),.dot(0),.leds(HEX5));
-SevSegController ssc4(.dig(romData[11:8]),.dot(0),.leds(HEX2));
-SevSegController ssc5(.dig(romData[15:12]),.dot(0),.leds(HEX3));
+bidirec bdBus(budDir,clkFast, gba_cart_lowAdd, gba_cart_romData, GPIO[15:0]);
 
-bidirec bdBus(budDir,clk, gba_cart_lowAdd, gba_cart_romData, GPIO[15:0]);
-
+UART uart0(.clk(clkFast),  .tx(tx),  .txData(tx_data),  .portAvailable(portAvailable),  .send(send));
 
 initial gba_cart_RD = 1'b0;
 initial gba_cart_CS = 1'b0;
-initial gba_cart_lowAdd = 16'H0010;
+initial gba_cart_lowAdd = 16'H0000;
 initial gba_cart_upAdd = 8'H00;
 initial budDir = 1'b1;
 
 initial step = 8'H00;
+initial nextStep = 8'H00;
+initial gba_cart_Add = 24'H0000000;
 
-always @(posedge(clk)) begin
+initial memIdx = 0;
+initial memIdxB = 0;
+initial send = 0;
+initial transmit = 0;
+initial newDump = 0;
+initial nDumps = 24'H0000000;
+
 /*
-	gba_cart_WR <= 1'b1;
-	gba_cart_CS2 <= 1'b1;
-	gba_cart_upAdd <= gba_cart_lowAdd - 1;
+always @(posedge(KEY[0])) begin
+	if(step!=8'H06)step <= step + 1;
+	if(step==8'H06)step <= 8'H00;
+end
 */
-/*
-	gba_cart_RD <= 1'b1;
-
-	gba_cart_lowAdd <= gba_cart_lowAdd + 1;
-
-	digA <= gba_cart_sramData[3:0];
-	digB <= gba_cart_sramData[7:4];*/
+always @(posedge(clkSlow)) begin
 
 	case (step)
-		8'H00: 
-			gba_cart_RD <= 1'b1;
+		8'H00: // ----- NON SEQUENTIAL
+			begin
+				gba_cart_RD <= 1'b1;
+				step <= 8'H01;
+			end
+			
 		8'H01: 
-			gba_cart_CS <= 1'b1;
+			begin
+				gba_cart_CS <= 1'b1;
+				budDir <= 1'b1;
+				step <= 8'H02;
+			end
+
 		8'H02: 
-			gba_cart_lowAdd <= 16'H0010;
+			begin
+				gba_cart_upAdd <= gba_cart_Add[23:16];
+				gba_cart_lowAdd <= gba_cart_Add[15:0];
+				step <= 8'H03;
+			end
+
 		8'H03: 
-			gba_cart_CS <= 1'b0;
+			begin
+				gba_cart_CS <= 1'b0;
+				step <= 8'H04;
+			end
+
 		8'H04: 
-			budDir <= 1'b0;
+			begin
+				budDir <= 1'b0;
+				step <= 8'H05;
+			end
+
 		8'H05: 
-			gba_cart_RD <= 1'b0;
+			begin
+				gba_cart_RD <= 1'b0;
+				step <= 8'H06;
+			end
+
+		8'H06: 
+			begin
+				memDumped[memIdx] = gba_cart_romData[7:0];
+				memDumped[memIdx + 1] = gba_cart_romData[15:8];
+
+				
+				step <= 8'H07;
+			end
+
+		8'H07: 
+			begin
+				gba_cart_Add <= gba_cart_Add + 1;
+					if(newDump == 0) begin
+						step <= 8'HA0; //
+					end
+					else begin
+						step <= 8'HA2; //
+					end
+			end
+		// ----------- SEQUENTIAL
+		8'H08: 
+			begin
+				gba_cart_RD <= 1'b1;
+				step <= 8'H09;
+			end
+		8'H09: 
+			begin
+				gba_cart_RD <= 1'b0;
+				step <= 8'H0A;
+			end
+
+		8'H0A: 
+			begin
+				memDumped[memIdx] = gba_cart_romData[7:0];
+				memDumped[memIdx + 1] = gba_cart_romData[15:8];
+
+				step <= 8'HA2;
+			end
+
+
+		// ----------- START TRANSMISSION
+		8'HA0: begin
+			tx_data <= openMsg[memIdxB];
+			if(memIdxB <= OPENMSG_SIZE) begin
+				memIdxB <= memIdxB + 1;
+				step <= 8'HA1;
+			end
+			else begin
+				memIdxB <= 0;
+				step <= 8'HB2;
+			end
+			
+			send <= 1;
+		end
+		8'HA1: begin
+			step <= 8'HA0;
+			send <= 0;
+		end
+		// ----------- END TRANSMISSION
+		8'HA6: begin
+			tx_data <= endMsg[memIdxB];
+			send <= 1;
+			if(memIdxB <= ENDMSG_SIZE) begin
+				memIdxB <= memIdxB + 1;
+				step <= 8'HA7;
+			end
+			else begin
+				memIdxB <= 0;
+				step <= 8'H00;
+			end
+
+		end
+		8'HA7: begin
+			send <= 0;
+			step <= 8'HA6;
+		end
+		// ------ DEAD TRANSMISSION TO AVOID BUG
+		8'HB2: begin
+			tx_data <= 8'H00;
+			step <= 8'HB3;
+			send <= 1;
+
+		end
+		8'HB3: begin
+			newDump <= 1;
+			send <= 0;
+			nextStep <= 8'HA2;
+			step <= 8'HFF;
+		end
+		// ------ INFO TRANSMISSION A
+		8'HA2: begin
+			tx_data <= memDumped[0];
+			step <= 8'HA3;
+			send <= 1;
+
+		end
+		8'HA3: begin
+			newDump <= 1;
+			send <= 0;
+			nextStep <= 8'HA4;
+			step <= 8'HFF;
+			nDumps <= nDumps + 1;
+		end
+		// ------ INFO TRANSMISSION B
+		8'HA4: begin
+			tx_data <= memDumped[1];
+			send <= 1;
+			step <= 8'HA5;
+		end
+		8'HA5: begin
+			newDump <= 1;
+			send <= 0;
+			nextStep <= 8'H08; // TO SEQUENTIAL ACCESS
+			step <= 8'HFF;
+			nDumps <= nDumps + 1;
+		end
+
+		// ------ IDLE
+		8'HFF: begin
+			step <= nextStep;
+		end
+
+
 	endcase
-
-
-end
-
-always @(negedge(KEY[0])) begin
-	if(step == 8'H05) step = 8'H00;
-	else step <= step + 1;
 end
 
 endmodule

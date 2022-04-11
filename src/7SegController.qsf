@@ -425,6 +425,9 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name BOARD "MAX 10 DE10 - Lite"
+set_global_assignment -name VERILOG_FILE PulseGenerator.v
+set_global_assignment -name VERILOG_FILE FlipFlopSR.v
+set_global_assignment -name VERILOG_FILE UART.v
 set_global_assignment -name VERILOG_FILE bidirec.v
 set_global_assignment -name VERILOG_FILE DE10_LITE_Golden_Top.v
 set_global_assignment -name VERILOG_FILE SevSegController.v

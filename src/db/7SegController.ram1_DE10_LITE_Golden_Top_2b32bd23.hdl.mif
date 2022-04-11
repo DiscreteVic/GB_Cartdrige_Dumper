@@ -1,0 +1,15 @@
+-- begin_signature
+-- DE10_LITE_Golden_Top
+-- end_signature
+WIDTH=8;
+DEPTH=4;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+	3 :	00111110;
+	2 :	01000101;
+	1 :	00111100;
+	0 :	00000000;
+END;
