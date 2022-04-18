@@ -232,7 +232,7 @@ end
 //  Structural coding
 //=======================================================
 
-Prescaler #(.N(6)) pres(.clk_in(MAX10_CLK1_50), .clk_out(clkSlow));
+Prescaler #(.N(7)) pres(.clk_in(MAX10_CLK1_50), .clk_out(clkSlow));
 
 Prescaler #(.N(4)) presUART(.clk_in(MAX10_CLK1_50), .clk_out(clkFast)); //3Mbaud
 
@@ -423,7 +423,7 @@ always @(posedge(clkSlow)) begin
 		8'HA5: begin
 			newDump <= 1;
 			send <= 0;
-			nextStep <= 8'H08; // TO SEQUENTIAL ACCESS
+			nextStep <= 8'H00; // TO NON SEQUENTIAL ACCESS
 			step <= 8'HFF;
 			nDumps <= nDumps + 1;
 		end

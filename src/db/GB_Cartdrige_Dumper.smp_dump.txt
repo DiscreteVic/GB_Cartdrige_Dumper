@@ -1,10 +1,9 @@
 
 State Machine - |DE10_LITE_Golden_Top|nextStep
-Name nextStep.00000000 nextStep.00001000 nextStep.10100100 nextStep.10100010 
-nextStep.00000000 0 0 0 0 
-nextStep.00001000 1 1 0 0 
-nextStep.10100010 1 0 0 1 
-nextStep.10100100 1 0 1 0 
+Name nextStep.00000000 nextStep.10100100 nextStep.10100010 
+nextStep.00000000 0 0 0 
+nextStep.10100010 1 0 1 
+nextStep.10100100 1 1 0 
 
 State Machine - |DE10_LITE_Golden_Top|step
 Name step.10110011 step.10110010 step.10100111 step.10100110 step.10100101 step.10100100 step.10100011 step.10100010 step.10100001 step.10100000 step.00001010 step.00001001 step.00001000 step.00000111 step.00000110 step.00000101 step.00000100 step.00000011 step.00000010 step.00000001 step.00000000 step.11111111 

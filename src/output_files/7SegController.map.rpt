@@ -1,5 +1,5 @@
 Analysis & Synthesis report for 7SegController
-Tue Apr 12 00:44:52 2022
+Tue Apr 12 16:11:58 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -17,24 +17,25 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   9. State Machine - |DE10_LITE_Golden_Top|step
  10. Logic Cells Representing Combinational Loops
  11. Registers Removed During Synthesis
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Parameter Settings for User Entity Instance: Top-level Entity: |DE10_LITE_Golden_Top
- 16. Parameter Settings for User Entity Instance: Prescaler:pres
- 17. Parameter Settings for User Entity Instance: Prescaler:presUART
- 18. Port Connectivity Checks: "UART:uart0|PulseGenerator:pGen|FlipFlopSR:ffSRB"
- 19. Port Connectivity Checks: "UART:uart0|PulseGenerator:pGen|FlipFlopSR:ffSRA"
- 20. Port Connectivity Checks: "UART:uart0"
- 21. Port Connectivity Checks: "SevSegController:ssc3"
- 22. Port Connectivity Checks: "SevSegController:ssc2"
- 23. Port Connectivity Checks: "SevSegController:ssc5"
- 24. Port Connectivity Checks: "SevSegController:ssc4"
- 25. Port Connectivity Checks: "SevSegController:ssc1"
- 26. Post-Synthesis Netlist Statistics for Top Partition
- 27. Elapsed Time Per Partition
- 28. Analysis & Synthesis Messages
- 29. Analysis & Synthesis Suppressed Messages
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: Top-level Entity: |DE10_LITE_Golden_Top
+ 17. Parameter Settings for User Entity Instance: Prescaler:pres
+ 18. Parameter Settings for User Entity Instance: Prescaler:presUART
+ 19. Port Connectivity Checks: "UART:uart0|PulseGenerator:pGen|FlipFlopSR:ffSRB"
+ 20. Port Connectivity Checks: "UART:uart0|PulseGenerator:pGen|FlipFlopSR:ffSRA"
+ 21. Port Connectivity Checks: "UART:uart0"
+ 22. Port Connectivity Checks: "SevSegController:ssc3"
+ 23. Port Connectivity Checks: "SevSegController:ssc2"
+ 24. Port Connectivity Checks: "SevSegController:ssc5"
+ 25. Port Connectivity Checks: "SevSegController:ssc4"
+ 26. Port Connectivity Checks: "SevSegController:ssc1"
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
+ 30. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -61,15 +62,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Apr 12 00:44:52 2022       ;
+; Analysis & Synthesis Status        ; Successful - Tue Apr 12 16:11:58 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; 7SegController                              ;
 ; Top-level Entity Name              ; DE10_LITE_Golden_Top                        ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 328                                         ;
-;     Total combinational functions  ; 236                                         ;
-;     Dedicated logic registers      ; 213                                         ;
-; Total registers                    ; 213                                         ;
+; Total logic elements               ; 323                                         ;
+;     Total combinational functions  ; 234                                         ;
+;     Dedicated logic registers      ; 211                                         ;
+; Total registers                    ; 211                                         ;
 ; Total pins                         ; 145                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -204,29 +205,29 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------------------+
 ; Resource                                    ; Usage                   ;
 +---------------------------------------------+-------------------------+
-; Estimated Total logic elements              ; 328                     ;
+; Estimated Total logic elements              ; 323                     ;
 ;                                             ;                         ;
-; Total combinational functions               ; 236                     ;
+; Total combinational functions               ; 234                     ;
 ; Logic element usage by number of LUT inputs ;                         ;
 ;     -- 4 input functions                    ; 107                     ;
-;     -- 3 input functions                    ; 33                      ;
-;     -- <=2 input functions                  ; 96                      ;
+;     -- 3 input functions                    ; 34                      ;
+;     -- <=2 input functions                  ; 93                      ;
 ;                                             ;                         ;
 ; Logic elements by mode                      ;                         ;
-;     -- normal mode                          ; 148                     ;
-;     -- arithmetic mode                      ; 88                      ;
+;     -- normal mode                          ; 145                     ;
+;     -- arithmetic mode                      ; 89                      ;
 ;                                             ;                         ;
-; Total registers                             ; 213                     ;
-;     -- Dedicated logic registers            ; 213                     ;
+; Total registers                             ; 211                     ;
+;     -- Dedicated logic registers            ; 211                     ;
 ;     -- I/O registers                        ; 0                       ;
 ;                                             ;                         ;
 ; I/O pins                                    ; 145                     ;
 ;                                             ;                         ;
 ; Embedded Multiplier 9-bit elements          ; 0                       ;
 ;                                             ;                         ;
-; Maximum fan-out node                        ; Prescaler:pres|count[5] ;
-; Maximum fan-out                             ; 158                     ;
-; Total fan-out                               ; 1592                    ;
+; Maximum fan-out node                        ; Prescaler:pres|count[6] ;
+; Maximum fan-out                             ; 155                     ;
+; Total fan-out                               ; 1585                    ;
 ; Average fan-out                             ; 2.01                    ;
 +---------------------------------------------+-------------------------+
 
@@ -236,9 +237,9 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------+----------------------+--------------+
 ; Compilation Hierarchy Node  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                   ; Entity Name          ; Library Name ;
 +-----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------+----------------------+--------------+
-; |DE10_LITE_Golden_Top       ; 236 (128)           ; 213 (157)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 145  ; 0            ; 0          ; |DE10_LITE_Golden_Top                                                 ; DE10_LITE_Golden_Top ; work         ;
+; |DE10_LITE_Golden_Top       ; 234 (125)           ; 211 (154)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 145  ; 0            ; 0          ; |DE10_LITE_Golden_Top                                                 ; DE10_LITE_Golden_Top ; work         ;
 ;    |Prescaler:presUART|     ; 5 (5)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|Prescaler:presUART                              ; Prescaler            ; work         ;
-;    |Prescaler:pres|         ; 3 (3)               ; 3 (3)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|Prescaler:pres                                  ; Prescaler            ; work         ;
+;    |Prescaler:pres|         ; 4 (4)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|Prescaler:pres                                  ; Prescaler            ; work         ;
 ;    |SevSegController:ssc0|  ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|SevSegController:ssc0                           ; SevSegController     ; work         ;
 ;    |SevSegController:ssc1|  ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|SevSegController:ssc1                           ; SevSegController     ; work         ;
 ;    |SevSegController:ssc2|  ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |DE10_LITE_Golden_Top|SevSegController:ssc2                           ; SevSegController     ; work         ;
@@ -255,16 +256,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+---------------------------------------------------------------------------------------------------+
-; State Machine - |DE10_LITE_Golden_Top|nextStep                                                    ;
-+-------------------+-------------------+-------------------+-------------------+-------------------+
-; Name              ; nextStep.00000000 ; nextStep.00001000 ; nextStep.10100100 ; nextStep.10100010 ;
-+-------------------+-------------------+-------------------+-------------------+-------------------+
-; nextStep.00000000 ; 0                 ; 0                 ; 0                 ; 0                 ;
-; nextStep.00001000 ; 1                 ; 1                 ; 0                 ; 0                 ;
-; nextStep.10100010 ; 1                 ; 0                 ; 0                 ; 1                 ;
-; nextStep.10100100 ; 1                 ; 0                 ; 1                 ; 0                 ;
-+-------------------+-------------------+-------------------+-------------------+-------------------+
++-------------------------------------------------------------------------------+
+; State Machine - |DE10_LITE_Golden_Top|nextStep                                ;
++-------------------+-------------------+-------------------+-------------------+
+; Name              ; nextStep.00000000 ; nextStep.10100100 ; nextStep.10100010 ;
++-------------------+-------------------+-------------------+-------------------+
+; nextStep.00000000 ; 0                 ; 0                 ; 0                 ;
+; nextStep.10100010 ; 1                 ; 0                 ; 1                 ;
+; nextStep.10100100 ; 1                 ; 1                 ; 0                 ;
++-------------------+-------------------+-------------------+-------------------+
 
 
 Encoding Type:  One-Hot
@@ -319,23 +319,35 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 ; Prescaler:pres|count[1]                ; Merged with Prescaler:presUART|count[1] ;
 ; Prescaler:pres|count[2]                ; Merged with Prescaler:presUART|count[2] ;
 ; nextStep~2                             ; Lost fanout                             ;
+; nextStep~5                             ; Lost fanout                             ;
 ; nextStep~6                             ; Lost fanout                             ;
-; nextStep~7                             ; Lost fanout                             ;
 ; nextStep~8                             ; Lost fanout                             ;
 ; nextStep~9                             ; Lost fanout                             ;
+; step~3                                 ; Lost fanout                             ;
 ; step~4                                 ; Lost fanout                             ;
 ; step~5                                 ; Lost fanout                             ;
 ; step~6                                 ; Lost fanout                             ;
 ; step~7                                 ; Lost fanout                             ;
 ; step~8                                 ; Lost fanout                             ;
-; step~9                                 ; Lost fanout                             ;
-; step~11                                ; Lost fanout                             ;
+; step~10                                ; Lost fanout                             ;
+; step.00001000                          ; Stuck at GND due to stuck port data_in  ;
+; step.00001001                          ; Stuck at GND due to stuck port data_in  ;
+; step.00001010                          ; Stuck at GND due to stuck port data_in  ;
 ; step.10100111                          ; Stuck at GND due to stuck port data_in  ;
 ; step.10100110                          ; Stuck at GND due to stuck port data_in  ;
 ; nDumps[25..31]                         ; Lost fanout                             ;
-; nextStep.00000000                      ; Merged with newDump                     ;
-; Total Number of Removed Registers = 25 ;                                         ;
+; Total Number of Removed Registers = 27 ;                                         ;
 +----------------------------------------+-----------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                        ;
++---------------+---------------------------+----------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------+---------------------------+----------------------------------------+
+; step.00001001 ; Stuck at GND              ; step.00001010                          ;
+;               ; due to stuck port data_in ;                                        ;
++---------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -343,12 +355,12 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 213   ;
+; Total registers                              ; 211   ;
 ; Number of registers using Synchronous Clear  ; 32    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 136   ;
+; Number of registers using Clock Enable       ; 135   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -376,8 +388,8 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |DE10_LITE_Golden_Top|memIdxB[15]        ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |DE10_LITE_Golden_Top|tx_data[6]         ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |DE10_LITE_Golden_Top|memIdxB[13]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |DE10_LITE_Golden_Top|tx_data[5]         ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |DE10_LITE_Golden_Top|tx_data[4]         ;
 ; 256:1              ; 8 bits    ; 1360 LEs      ; 24 LEs               ; 1336 LEs               ; Yes        ; |DE10_LITE_Golden_Top|UART:uart0|step[0] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
@@ -401,7 +413,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+------------------------------------+
 ; Parameter Name ; Value ; Type                               ;
 +----------------+-------+------------------------------------+
-; N              ; 6     ; Signed Integer                     ;
+; N              ; 7     ; Signed Integer                     ;
 +----------------+-------+------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -499,24 +511,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 145                         ;
-; cycloneiii_ff         ; 213                         ;
-;     ENA               ; 104                         ;
+; cycloneiii_ff         ; 211                         ;
+;     ENA               ; 103                         ;
 ;     ENA SCLR          ; 32                          ;
-;     plain             ; 77                          ;
+;     plain             ; 76                          ;
 ; cycloneiii_io_obuf    ; 55                          ;
-; cycloneiii_lcell_comb ; 245                         ;
-;     arith             ; 88                          ;
-;         2 data inputs ; 79                          ;
+; cycloneiii_lcell_comb ; 243                         ;
+;     arith             ; 89                          ;
+;         2 data inputs ; 80                          ;
 ;         3 data inputs ; 9                           ;
-;     normal            ; 157                         ;
+;     normal            ; 154                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 13                          ;
-;         2 data inputs ; 11                          ;
-;         3 data inputs ; 24                          ;
+;         2 data inputs ; 7                           ;
+;         3 data inputs ; 25                          ;
 ;         4 data inputs ; 107                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 2.27                        ;
+; Average LUT depth     ; 2.26                        ;
 +-----------------------+-----------------------------+
 
 
@@ -535,7 +547,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Tue Apr 12 00:44:45 2022
+    Info: Processing started: Tue Apr 12 16:11:50 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off GB_Cartdrige_Dumper -c 7SegController
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -571,7 +583,7 @@ Warning (10034): Output port "VGA_VS" at DE10_LITE_Golden_Top.v(100) has no driv
 Warning (10034): Output port "GSENSOR_CS_N" at DE10_LITE_Golden_Top.v(105) has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 105
 Warning (10034): Output port "GSENSOR_SCLK" at DE10_LITE_Golden_Top.v(107) has no driver File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 107
 Info (12128): Elaborating entity "Prescaler" for hierarchy "Prescaler:pres" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 235
-Warning (10230): Verilog HDL assignment warning at Prescaler.v(13): truncated value with size 32 to match size of target (6) File: D:/Projects/GB_Cartdrige_Dumper/src/Prescaler.v Line: 13
+Warning (10230): Verilog HDL assignment warning at Prescaler.v(13): truncated value with size 32 to match size of target (7) File: D:/Projects/GB_Cartdrige_Dumper/src/Prescaler.v Line: 13
 Info (12128): Elaborating entity "Prescaler" for hierarchy "Prescaler:presUART" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 237
 Warning (10230): Verilog HDL assignment warning at Prescaler.v(13): truncated value with size 32 to match size of target (4) File: D:/Projects/GB_Cartdrige_Dumper/src/Prescaler.v Line: 13
 Info (12128): Elaborating entity "SevSegController" for hierarchy "SevSegController:ssc0" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 239
@@ -691,16 +703,16 @@ Warning (21074): Design contains 15 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[9]" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 91
     Warning (15610): No output dependent on input pin "GSENSOR_INT[1]" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 106
     Warning (15610): No output dependent on input pin "GSENSOR_INT[2]" File: D:/Projects/GB_Cartdrige_Dumper/src/DE10_LITE_Golden_Top.v Line: 106
-Info (21057): Implemented 474 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 469 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 74 output pins
     Info (21060): Implemented 55 bidirectional pins
-    Info (21061): Implemented 329 logic cells
+    Info (21061): Implemented 324 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 123 warnings
     Info: Peak virtual memory: 4842 megabytes
-    Info: Processing ended: Tue Apr 12 00:44:52 2022
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:16
+    Info: Processing ended: Tue Apr 12 16:11:58 2022
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:17
 
 
 +------------------------------------------+
