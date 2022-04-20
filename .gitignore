@@ -1,0 +1,8 @@
+# Compilation files
+*.a
+*.o
+
+# Binary files
+*.elf
+*.img
+*.srec
